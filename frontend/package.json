@@ -1,0 +1,19 @@
+{
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "Frontend para o projeto de gerenciamento de tarefas",
+    "main": "src/main.js",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+    },
+    "dependencies": {
+      "vue": "^3.3.4",
+      "axios": "^1.4.0"
+    },
+    "devDependencies": {
+      "@vitejs/plugin-vue": "^4.2.3",
+      "vite": "^4.4.5"
+    }
+  }
