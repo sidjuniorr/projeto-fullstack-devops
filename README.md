@@ -2,21 +2,6 @@
 
 Este é um projeto fullstack simples para gerenciar tarefas, desenvolvido com Flask para o backend e Vue.js para o frontend.
 
-## Estrutura do Projeto
-
-projeto-fullstack/
-├── backend/        # Backend em Flask
-│   ├── src/
-│   │   └── main.py # Arquivo principal da API
-│   ├── requirements.txt
-│   └── venv/       # Ambiente virtual Python
-└── frontend/       # Frontend em Vue.js
-├── src/
-│   ├── App.vue # Componente principal
-│   └── main.js # Arquivo de entrada
-├── package.json
-└── node_modules/
-
 ## Funcionalidades
 
 - Adicionar novas tarefas
@@ -24,7 +9,6 @@ projeto-fullstack/
 - Marcar tarefas como concluídas/não concluídas
 - Excluir tarefas
 - Interface responsiva
-
 
 ## Como Rodar o Projeto
 
@@ -40,6 +24,40 @@ O backend estará rodando em http://localhost:5000
 cd frontend
 npm run dev
 O frontend estará rodando em http://localhost:3000
+
+### Testes de Backend (Pytest)
+
+1. Certifique-se de ter o `pytest` instalado no ambiente virtual do backend:
+   ```bash
+   cd backend
+   source venv/bin/activate
+   pip install pytest
+   cd ..
+   ```
+
+2. Execute os testes a partir da raiz do projeto:
+   ```bash
+   cd backend
+   source venv/bin/activate
+   python -m pytest tests/
+   cd ..
+   ```
+
+### Testes de Frontend (Vitest)
+
+1. Certifique-se de ter o `vitest` e as dependências instaladas no frontend:
+   ```bash
+   cd frontend
+   npm install -D vitest @vue/test-utils @vitest/ui jsdom
+   cd ..
+   ```
+
+2. Execute os testes a partir da raiz do projeto:
+   ```bash
+   cd frontend
+   npm test
+   cd ..
+   ```
 
 ## API Endpoints
 
@@ -61,4 +79,3 @@ Frontend
 Vue.js 3.3.4
 Axios 1.4.0
 Vite 4.4.5
-
