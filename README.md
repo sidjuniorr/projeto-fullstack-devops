@@ -12,17 +12,19 @@ Este é um projeto fullstack simples para gerenciar tarefas, desenvolvido com Fl
 
 ## Como Rodar o Projeto
 
-### Backend (Flask)
-
-cd backend
-source venv/bin/activate
-python src/main.py
+1. Backend (Flask)
+   ```bash
+   cd backend
+   source venv/bin/activate
+   python src/main.py
+   ```
 O backend estará rodando em http://localhost:5000
 
-### Frontend (Vue.js)
-
-cd frontend
-npm run dev
+2. Frontend (Vue.js)
+   ```bash
+   cd frontend
+   npm run dev
+   ```
 O frontend estará rodando em http://localhost:3000
 
 ### Testes de Backend (Pytest)
@@ -66,6 +68,38 @@ GET /tarefas - Lista todas as tarefas
 POST /tarefas - Cria uma nova tarefa
 PUT /tarefas/<id> - Atualiza uma tarefa existente
 DELETE /tarefas/<id> - Exclui uma tarefa
+
+## Como Rodar o Projeto com Docker
+
+1.  Navegue até a raiz do projeto (`projeto-fullstack`):
+    ```bash
+    cd projeto-fullstack
+    ```
+
+2.  Construa as imagens Docker:
+    ```bash
+    docker compose build
+    ```
+
+3.  Inicie os contêineres:
+    ```bash
+    docker compose up -d
+    ```
+
+4.  Acesse o frontend em seu navegador: `http://localhost:8080`
+
+5.  Para parar e remover os contêineres:
+    ```bash
+    docker compose down
+    ```
+
+## Integração Contínua (CI/CD) com GitHub Actions
+
+Este projeto utiliza GitHub Actions para automatizar o processo de CI/CD. Em cada `push` ou `pull_request` para a branch `master`, o workflow irá:
+
+1.  Executar os testes de backend (Pytest).
+2.  Executar os testes de frontend (Vitest).
+3.  Construir e enviar as imagens Docker do backend e frontend para o Docker Hub.
 
 ## Tecnologias Utilizadas
 
