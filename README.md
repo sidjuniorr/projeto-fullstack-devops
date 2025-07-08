@@ -101,6 +101,44 @@ Este projeto utiliza GitHub Actions para automatizar o processo de CI/CD. Em cad
 2.  Executar os testes de frontend (Vitest).
 3.  Construir e enviar as imagens Docker do backend e frontend para o Docker Hub.
 
+## Orquestração com Kubernetes (Kind)
+
+Este projeto pode ser implantado em um cluster Kubernetes local usando Kind (Kubernetes in Docker).
+
+### Pré-requisitos
+
+*   [Docker](https://docs.docker.com/)
+*   [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+*   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+### Passos para Implantação Local
+
+1.  **Crie o cluster Kind:**
+    ```bash
+    kind create cluster --config kind-config.yaml --name fullstack-cluster
+    ```
+
+2.  **Carregue as imagens Docker no Kind (opcional, mas recomendado para desenvolvimento):**
+    ```bash
+    kind load docker-image YOUR_DOCKERHUB_USERNAME/fullstack-backend:latest --name fullstack-cluster
+    kind load docker-image YOUR_DOCKERHUB_USERNAME/fullstack-frontend:latest --name fullstack-cluster
+    ```
+    (Substitua `YOUR_DOCKERHUB_USERNAME` pelo seu usuário do Docker Hub)
+
+3.  **Aplique os manifests Kubernetes:**
+    ```bash
+    kubectl apply -f k8s/backend.yaml
+    kubectl apply -f k8s/frontend.yaml
+    ```
+
+4.  **Acesse a aplicação:**
+    *   Para acesso do frontend: `kubectl port-forward service/fullstack-frontend-service 8080:80` e acesse `http://localhost:8080`.
+    *   Para acesso do backend: `kubectl port-forward service/fullstack-backend-service 5000:5000` e acesse `http://localhost:5000`.
+
+5.  **Para remover o cluster:**
+    ```bash
+    kind delete cluster --name fullstack-cluster
+
 ## Tecnologias Utilizadas
 
 Backend
