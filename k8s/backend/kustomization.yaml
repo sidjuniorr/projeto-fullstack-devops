@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+- service.yaml
+
+images:
+- name: fullstack-backend
+  newName: sidjunior/fullstack-backend
+  newTag: fbb20c29b55dedd1626d73d18845b41c8a312e40
