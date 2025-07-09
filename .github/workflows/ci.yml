@@ -93,5 +93,5 @@ jobs:
 
       - name: Update frontend kustomization image tag
         run: |
-          cd ../../frontend
+          cd k8s/frontend
           kustomize edit set image fullstack-frontend=${{ secrets.DOCKERHUB_USERNAME }}/fullstack-frontend:${{ github.sha }}
