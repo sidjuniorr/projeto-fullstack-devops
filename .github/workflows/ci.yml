@@ -81,17 +81,14 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fullstack-frontend:${{ github.sha }}
           file: ./frontend/Dockerfile
-          
-      # KUSTOMIZE
-      - name: Setup Kustomize
-        uses: imranismail/setup-kustomize@v2
 
-      - name: Update backend kustomization image tag
+      - name: Update Backend Image Tag in kustomization.yaml
         run: |
-          cd k8s/backend
+          cd k8s
           kustomize edit set image fullstack-backend=${{ secrets.DOCKERHUB_USERNAME }}/fullstack-backend:${{ github.sha }}
-
-      - name: Update frontend kustomization image tag
+  
+      - name: Update Frontend Image Tag in kustomization.yaml
         run: |
-          cd k8s/frontend
+          cd k8s
           kustomize edit set image fullstack-frontend=${{ secrets.DOCKERHUB_USERNAME }}/fullstack-frontend:${{ github.sha }}
+  

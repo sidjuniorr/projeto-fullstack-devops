@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fullstack-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fullstack-backend
+  template:
+    metadata:
+      labels:
+        app: fullstack-backend
+    spec:
+      containers:
+        - name: fullstack-backend
+          image: sidjunior/fullstack-backend:latest
+          ports:
+            - containerPort: 5000
