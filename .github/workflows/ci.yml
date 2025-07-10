@@ -91,4 +91,10 @@ jobs:
         run: |
           cd k8s
           kustomize edit set image fullstack-frontend=${{ secrets.DOCKERHUB_USERNAME }}/fullstack-frontend:${{ github.sha }}
-  
+
+      - name: Update Backend Image Tag
+        run: |
+          cd k8s
+          kustomize edit set image fullstack-backend=sidjunior/fullstack-backend:${{ github.sha }}
+          kustomize edit set image fullstack-frontend=sidjunior/fullstack-frontend:${{ github.sha }}
+        
