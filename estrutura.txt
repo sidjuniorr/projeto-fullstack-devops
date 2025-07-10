@@ -1,0 +1,53 @@
+.
+├── backend
+│   ├── Dockerfile
+│   ├── .pytest_cache
+│   │   ├── CACHEDIR.TAG
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   └── v
+│   │       └── cache
+│   │           ├── lastfailed
+│   │           └── nodeids
+│   ├── requirements.txt
+│   ├── src
+│   │   ├── main.py
+│   │   └── __pycache__
+│   │       └── main.cpython-312.pyc
+│   └── tests
+│       ├── __pycache__
+│       │   └── test_api.cpython-312-pytest-8.4.1.pyc
+│       └── test_api.py
+├── docker-compose.yml
+├── estrutura.txt
+├── frontend
+│   ├── Dockerfile
+│   ├── .dockerignore
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── src
+│   │   ├── App.vue
+│   │   └── main.js
+│   ├── tests
+│   │   └── App.test.js
+│   └── vite.config.js
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── k8s
+│   ├── backend
+│   │   ├── deployment.yaml
+│   │   ├── kustomization.yaml
+│   │   └── service.yaml
+│   ├── frontend
+│   │   ├── deployment.yaml
+│   │   ├── kustomization.yaml
+│   │   └── service.yaml
+│   └── kustomization.yaml
+├── kind-config.yaml
+├── README.md
+└── requirements.txt
+
+17 directories, 34 files
