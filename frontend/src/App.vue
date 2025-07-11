@@ -178,7 +178,7 @@ input, textarea {
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #66a6f0;
 }
 
 button {
@@ -191,12 +191,12 @@ button {
 }
 
 button[type="submit"] {
-  background-color: #4CAF50;
+  background-color: #66a6f0;
   color: white;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #66a6f0;
 }
 
 .tarefas-container {
