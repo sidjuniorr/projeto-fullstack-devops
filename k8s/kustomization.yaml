@@ -2,16 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - backend-deployment.yaml
-  - backend-service.yaml
-  - frontend-deployment.yaml
-  - frontend-service.yaml
+- backend-deployment.yaml
+- backend-service.yaml
+- frontend-deployment.yaml
+- frontend-service.yaml
+
 
 images:
-  - name: fullstack-backend
-    newName: sidjunior/fullstack-backend
-    newTag: d676a28ba53d13f8ce897db01b42193370105507
-
-  - name: fullstack-frontend
-    newName: sidjunior/fullstack-frontend
-    newTag: d676a28ba53d13f8ce897db01b42193370105507
+- name: fullstack-backend
+  newName: sidjunior/fullstack-backend
+  newTag: b13412a710e8bb5562a2f809ee2152e5e53cbc72
+- name: fullstack-frontend
+  newName: sidjunior/fullstack-frontend
+  newTag: b13412a710e8bb5562a2f809ee2152e5e53cbc72
