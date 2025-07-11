@@ -91,4 +91,18 @@ jobs:
         run: |
           cd k8s
           kustomize edit set image fullstack-frontend=${{ secrets.DOCKERHUB_USERNAME }}/fullstack-frontend:${{ github.sha }}
+
+      - name: Commit updated image tags
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add k8s/kustomization.yaml
+          git commit -m "ci: atualiza tags das imagens para SHA ${{ github.sha }}" || echo "Sem alterações para commitar"
+        
+      - name: Push changes to repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+
         
