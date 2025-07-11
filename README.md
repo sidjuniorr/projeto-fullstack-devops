@@ -139,6 +139,65 @@ Este projeto pode ser implantado em um cluster Kubernetes local usando Kind (Kub
     ```bash
     kind delete cluster --name fullstack-cluster
 
+## Entrega Contínua (CD) com ArgoCD
+
+Este projeto utiliza o ArgoCD para realizar a entrega contínua (CD) das aplicações frontend e backend em um cluster Kubernetes local criado com o Kind.
+
+### Pré-requisitos
+
+*   Cluster Kubernetes local (Kind)
+*   GitHub Actions configurado com: Secrets: DOCKERHUB_USERNAME, DOCKERHUB_TOKEN
+*   Repositórios criados no Docker Hub: fullstack-backend, fullstack-frontend
+
+### Etapas de Configuração
+
+Instalação do ArgoCD no cluster
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+Acessar o ArgoCD via navegador
+```bash
+kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 8080:443
+```
+Acesse: `https://localhost:8080`
+Usuário: `admin`
+
+Para obter a senha:
+```bash
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
+```
+### Criação do App no ArgoCD
+
+*   **Application Name**: `fullstack-app`
+*   **Repository URL**: seu repositório no GitHub
+*   **Revision**: `HEAD`
+*   **Path**: `k8s`
+*   **Namespace**: `default`
+*   **Sync Policy**: Manual ou Automática
+
+### Manifests Kubernetes com Kustomize
+
+Todos os arquivos de Deployment, Service e `kustomization.yaml` estão na pasta `k8s/`, com as imagens configuradas para serem atualizadas automaticamente com base no SHA do commit.
+
+### CI/CD com GitHub Actions
+
+O workflow do GitHub Actions:
+
+1.  Roda os testes
+2.  Constrói e envia as imagens Docker para o Docker Hub com a tag `latest` e `${{ github.sha }}`
+3.  Atualiza o `kustomization.yaml` com a nova imagem
+4.  Faz commit e push da alteração
+
+### Acessar a aplicação implantada
+
+Execute os seguintes comandos para acessar a aplicação:
+
+```bash
+kubectl port-forward svc/fullstack-frontend-service 8080:80
+kubectl port-forward svc/fullstack-backend-service 5000:5000
+```
+
 ## Tecnologias Utilizadas
 
 Backend
