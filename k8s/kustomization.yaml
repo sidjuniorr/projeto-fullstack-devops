@@ -12,7 +12,7 @@ resources:
 images:
 - name: fullstack-backend
   newName: sidjunior/fullstack-backend
-  newTag: 7143fc0142bb7e052cc271ca0ad408061c829782
+  newTag: c65153da8d85622119468f70ed37e7c80f9e36da
 - name: fullstack-frontend
   newName: sidjunior/fullstack-frontend
-  newTag: 7143fc0142bb7e052cc271ca0ad408061c829782
+  newTag: c65153da8d85622119468f70ed37e7c80f9e36da
