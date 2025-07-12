@@ -63,11 +63,11 @@ O frontend estará rodando em http://localhost:3000
 
 ## API Endpoints
 
-GET / - Mensagem de boas-vindas
-GET /tarefas - Lista todas as tarefas
-POST /tarefas - Cria uma nova tarefa
-PUT /tarefas/<id> - Atualiza uma tarefa existente
-DELETE /tarefas/<id> - Exclui uma tarefa
+* GET / - Mensagem de boas-vindas
+* GET /tarefas - Lista todas as tarefas
+* POST /tarefas - Cria uma nova tarefa
+* PUT /tarefas/<id> - Atualiza uma tarefa existente
+* DELETE /tarefas/<id> - Exclui uma tarefa
 
 ## Como Rodar o Projeto com Docker
 
@@ -198,15 +198,59 @@ kubectl port-forward svc/fullstack-frontend-service 8080:80
 kubectl port-forward svc/fullstack-backend-service 5000:5000
 ```
 
+## Provisionamento de Infraestrutura com Terraform
+
+Este projeto também conta com o provisionamento automatizado da infraestrutura local usando Terraform.
+
+### O que é provisionado
+
+*   Execução local do cluster Kubernetes via Kind
+*   Comando para criação do cluster com base no arquivo `kind-config.yaml`
+*   Lógica condicional para evitar recriação do cluster se ele já existir
+
+### Como utilizar
+
+Acesse a pasta `infra/`:
+
+```bash
+cd infra
+```
+
+Inicialize o Terraform:
+
+```bash
+terraform init
+```
+
+Aplique o provisionamento:
+```bash
+terraform apply
+```
+
+⚠️ O script de criação do cluster verifica automaticamente se o cluster fullstack-cluster já existe antes de executar. Isso evita erros ou tentativas de recriação.
+
 ## Tecnologias Utilizadas
 
 Backend
 
-Flask 2.3.2
-Flask-CORS 3.0.10
+* Flask 2.3.2
+* Flask-CORS 3.0.10
+* Python 3.11
+* Docker 24.0.5
+* pytest 7.4.2
 
 Frontend
 
-Vue.js 3.3.4
-Axios 1.4.0
-Vite 4.4.5
+* Vue.js 3.3.4
+* Axios 1.4.0
+* Vite 4.4.9
+* Node.js 20.5.1
+* Docker 24.0.5
+* Vitest 0.31.2
+
+Infraestrutura
+
+* Docker Compose 2.21.1 (gerencia múltiplos containers)
+* Terraform 1.6.7 (infra como código, arquivos .tf)
+* Kubernetes 1.29.3 (arquivos YAML para deploy: deployments, services, kustomization)
+* Kind 0.21.0 (Kubernetes in Docker, arquivo kind-config.yaml)
