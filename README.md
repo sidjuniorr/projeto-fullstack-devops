@@ -229,6 +229,57 @@ terraform apply
 
 ⚠️ O script de criação do cluster verifica automaticamente se o cluster fullstack-cluster já existe antes de executar. Isso evita erros ou tentativas de recriação.
 
+## Integração com PostgreSQL
+
+Este projeto foi atualizado para utilizar PostgreSQL como banco de dados persistente, substituindo a abordagem anterior de dados em memória. Esta integração garante maior robustez, persistência de dados e escalabilidade para a aplicação.
+
+### Alterações no Backend
+
+O backend Flask (`backend/src/main.py`) foi modificado para interagir com o PostgreSQL utilizando o driver `psycopg2`. As operações CRUD (Criar, Ler, Atualizar, Deletar) agora persistem os dados no banco de dados. A configuração de conexão é gerenciada através de variáveis de ambiente (`DATABASE_URL`).
+
+As dependências do backend foram atualizadas para incluir `psycopg2-binary`.
+
+### Configuração com Docker Compose
+
+O arquivo `docker-compose.yml` foi estendido para incluir um serviço PostgreSQL. Isso permite que você execute a aplicação completa (backend, frontend e banco de dados) localmente com um único comando.
+
+Para iniciar a aplicação com PostgreSQL via Docker Compose:
+
+```bash
+docker compose up --build -d
+```
+O serviço `backend` agora depende do serviço `postgres`, garantindo que o banco de dados esteja pronto antes que o backend tente se conectar.
+
+### Implantação no Kubernetes (Kind)
+
+Os manifestos Kubernetes na pasta `k8s/` foram atualizados para incluir o Deployment e Service do PostgreSQL, além de um Persistent Volume Claim (PVC) para garantir a persistência dos dados do banco. Um `initContainer` foi adicionado ao Deployment do backend para garantir que ele aguarde o PostgreSQL estar disponível antes de iniciar.
+
+Para aplicar os manifests atualizados no seu cluster Kind:
+
+```bash
+kubectl apply -f k8s/postgres-simple.yaml
+# Certifique-se de que seu kustomization.yaml foi atualizado para incluir postgres-simple.yaml
+kubectl apply -k k8s/
+```
+
+### Integração com ArgoCD
+
+O ArgoCD reconhecerá automaticamente as novas configurações do PostgreSQL através do `kustomization.yaml` atualizado. Certifique-se de que seu `kustomization.yaml` inclua o `postgres-simple.yaml` na seção `resources`.
+
+O Application do ArgoCD continuará monitorando o repositório Git e aplicará as mudanças no cluster, garantindo que o PostgreSQL seja implantado e gerenciado como parte da sua aplicação fullstack.
+
+### Testes de Backend
+
+Os testes de backend (`backend/tests/test_api.py`) foram atualizados para utilizar mocking das operações de banco de dados. Isso garante que os testes unitários sejam rápidos e isolados, sem a necessidade de um servidor PostgreSQL real durante a execução dos testes. As funções de conexão e inicialização do banco de dados são simuladas para testar a lógica da aplicação de forma eficiente.
+
+Para executar os testes de backend:
+
+```bash
+cd backend
+source venv/bin/activate
+python3 -m pytest tests/
+```
+
 ## Tecnologias Utilizadas
 
 Backend
@@ -238,6 +289,8 @@ Backend
 * Python 3.11
 * Docker 24.0.5
 * pytest 7.4.2
+* PostgreSQL 16
+* psycopg2-binary
 
 Frontend
 
