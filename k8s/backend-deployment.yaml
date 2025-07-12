@@ -17,3 +17,6 @@ spec:
           image: sidjunior/fullstack-backend:latest
           ports:
             - containerPort: 5000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://meu_usuario:minha_senha@postgres:5432/meu_banco"
