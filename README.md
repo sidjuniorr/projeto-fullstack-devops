@@ -1,7 +1,72 @@
 # Projeto Fullstack de Gerenciamento de Tarefas
 
-Este é um projeto fullstack simples para gerenciar tarefas, desenvolvido com Flask para o backend e Vue.js para o frontend.
+Este é um projeto fullstack simples para gerenciar tarefas, desenvolvido com Flask para o backend e Vue.js para o frontend. O intuito é aplicarmos recursos e boas práticas de DevOps.
 
+## Pré-requisitos de Instalação
+
+### 1. Git
+
+Para clonar o repositório:
+```bash
+sudo apt install git        # Debian/Ubuntu
+   ```
+### 2. Python 3.11+, pip e venv
+
+Recomendado Python 3.11 ou superior. Instale também as ferramentas de ambiente virtual:
+```bash
+sudo apt install python3 python3-pip python3-venv
+   ```
+### 3. Node.js e npm
+
+Utilize o nvm para instalar o Node.js 20.x:
+```bash
+nvm install 20
+nvm use 20
+   ```
+
+### 4. Docker e Docker Compose
+
+Para rodar os serviços com containers:
+```bash
+sudo apt install docker.io docker-compose
+sudo systemctl enable docker
+sudo systemctl start docker
+   ```
+### 5. PostgreSQL
+
+Instale o PostgreSQL localmente:
+```bash
+sudo apt install postgresql postgresql-contrib
+   ```
+### 6. Kubernetes, Kind e kubectl
+
+Para executar o cluster local:
+```bash
+# Kind
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.21.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+# kubectl
+curl -LO "https://dl.k8s.io/release/v1.29.3/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+   ```
+### 7. ArgoCD (para entrega contínua)
+
+Após o cluster estar criado com Kind:
+```bash
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+   ```
+###8. Terraform
+
+Para provisionar infraestrutura com código:
+```bash
+wget https://releases.hashicorp.com/terraform/1.6.7/terraform_1.6.7_linux_amd64.zip
+unzip terraform_1.6.7_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+   ```
 ## Funcionalidades
 
 - Adicionar novas tarefas
@@ -105,12 +170,6 @@ Este projeto utiliza GitHub Actions para automatizar o processo de CI/CD. Em cad
 
 Este projeto pode ser implantado em um cluster Kubernetes local usando Kind (Kubernetes in Docker).
 
-### Pré-requisitos
-
-*   [Docker](https://docs.docker.com/)
-*   [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
-*   [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-
 ### Passos para Implantação Local
 
 1.  **Crie o cluster Kind:**
@@ -194,9 +253,11 @@ O workflow do GitHub Actions:
 Execute os seguintes comandos para acessar a aplicação:
 
 ```bash
-kubectl port-forward svc/fullstack-frontend-service 8080:80
+kubectl port-forward svc/fullstack-frontend-service 9090:80
 kubectl port-forward svc/fullstack-backend-service 5000:5000
 ```
+* Acesse: `https://localhost:9090` para o frontend
+* Acesse: `https://localhost:5000` para o backend
 
 ## Provisionamento de Infraestrutura com Terraform
 
