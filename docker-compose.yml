@@ -8,6 +8,10 @@ services:
     volumes:
       - ./backend:/app
     command: python src/main.py
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres123@postgres:5432/tarefas_db
+    depends_on:
+      - postgres
 
   frontend:
     build:
@@ -17,3 +21,17 @@ services:
       - "8080:80"
     volumes:
       - ./frontend:/app
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: tarefas_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -6,6 +6,7 @@ resources:
 - backend-service.yaml
 - frontend-deployment.yaml
 - frontend-service.yaml
+- postgres-simple.yaml
 
 
 images:
