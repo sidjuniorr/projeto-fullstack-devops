@@ -1,0 +1,197 @@
+.
+├── backend
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   ├── src
+│   │   ├── main.py
+│   │   └── __pycache__
+│   ├── tests
+│   │   ├── __pycache__
+│   │   └── test_api.py
+│   └── venv
+│       ├── include
+│       └── lib
+├── docker-compose.yml
+├── estrutura.txt
+├── frontend
+│   ├── Dockerfile
+│   ├── index.html
+│   ├── node_modules
+│   │   ├── abbrev
+│   │   ├── agent-base
+│   │   ├── ansi-regex
+│   │   ├── ansi-styles
+│   │   ├── @asamuzakjp
+│   │   ├── assertion-error
+│   │   ├── asynckit
+│   │   ├── axios
+│   │   ├── @babel
+│   │   ├── balanced-match
+│   │   ├── brace-expansion
+│   │   ├── cac
+│   │   ├── call-bind-apply-helpers
+│   │   ├── chai
+│   │   ├── check-error
+│   │   ├── color-convert
+│   │   ├── color-name
+│   │   ├── combined-stream
+│   │   ├── commander
+│   │   ├── config-chain
+│   │   ├── cross-spawn
+│   │   ├── cssstyle
+│   │   ├── @csstools
+│   │   ├── csstype
+│   │   ├── data-urls
+│   │   ├── debug
+│   │   ├── decimal.js
+│   │   ├── deep-eql
+│   │   ├── delayed-stream
+│   │   ├── dunder-proto
+│   │   ├── eastasianwidth
+│   │   ├── editorconfig
+│   │   ├── emoji-regex
+│   │   ├── entities
+│   │   ├── @esbuild
+│   │   ├── esbuild
+│   │   ├── es-define-property
+│   │   ├── es-errors
+│   │   ├── es-module-lexer
+│   │   ├── es-object-atoms
+│   │   ├── es-set-tostringtag
+│   │   ├── estree-walker
+│   │   ├── expect-type
+│   │   ├── fdir
+│   │   ├── fflate
+│   │   ├── flatted
+│   │   ├── follow-redirects
+│   │   ├── foreground-child
+│   │   ├── form-data
+│   │   ├── function-bind
+│   │   ├── get-intrinsic
+│   │   ├── get-proto
+│   │   ├── glob
+│   │   ├── gopd
+│   │   ├── hasown
+│   │   ├── has-symbols
+│   │   ├── has-tostringtag
+│   │   ├── html-encoding-sniffer
+│   │   ├── http-proxy-agent
+│   │   ├── https-proxy-agent
+│   │   ├── iconv-lite
+│   │   ├── ini
+│   │   ├── @isaacs
+│   │   ├── isexe
+│   │   ├── is-fullwidth-code-point
+│   │   ├── is-potential-custom-element-name
+│   │   ├── jackspeak
+│   │   ├── @jridgewell
+│   │   ├── js-beautify
+│   │   ├── js-cookie
+│   │   ├── jsdom
+│   │   ├── js-tokens
+│   │   ├── loupe
+│   │   ├── lru-cache
+│   │   ├── magic-string
+│   │   ├── math-intrinsics
+│   │   ├── mime-db
+│   │   ├── mime-types
+│   │   ├── minimatch
+│   │   ├── minipass
+│   │   ├── mrmime
+│   │   ├── ms
+│   │   ├── nanoid
+│   │   ├── nopt
+│   │   ├── nwsapi
+│   │   ├── @one-ini
+│   │   ├── package-json-from-dist
+│   │   ├── parse5
+│   │   ├── pathe
+│   │   ├── path-key
+│   │   ├── path-scurry
+│   │   ├── pathval
+│   │   ├── picocolors
+│   │   ├── picomatch
+│   │   ├── @pkgjs
+│   │   ├── @polka
+│   │   ├── postcss
+│   │   ├── proto-list
+│   │   ├── proxy-from-env
+│   │   ├── punycode
+│   │   ├── @rollup
+│   │   ├── rollup
+│   │   ├── rrweb-cssom
+│   │   ├── safer-buffer
+│   │   ├── saxes
+│   │   ├── semver
+│   │   ├── shebang-command
+│   │   ├── shebang-regex
+│   │   ├── siginfo
+│   │   ├── signal-exit
+│   │   ├── sirv
+│   │   ├── source-map-js
+│   │   ├── stackback
+│   │   ├── std-env
+│   │   ├── string-width
+│   │   ├── string-width-cjs
+│   │   ├── strip-ansi
+│   │   ├── strip-ansi-cjs
+│   │   ├── strip-literal
+│   │   ├── symbol-tree
+│   │   ├── tinybench
+│   │   ├── tinyexec
+│   │   ├── tinyglobby
+│   │   ├── tinypool
+│   │   ├── tinyrainbow
+│   │   ├── tinyspy
+│   │   ├── tldts
+│   │   ├── tldts-core
+│   │   ├── totalist
+│   │   ├── tough-cookie
+│   │   ├── tr46
+│   │   ├── @types
+│   │   ├── vite
+│   │   ├── @vitejs
+│   │   ├── vite-node
+│   │   ├── @vitest
+│   │   ├── vitest
+│   │   ├── @vue
+│   │   ├── vue
+│   │   ├── vue-component-type-helpers
+│   │   ├── w3c-xmlserializer
+│   │   ├── webidl-conversions
+│   │   ├── whatwg-encoding
+│   │   ├── whatwg-mimetype
+│   │   ├── whatwg-url
+│   │   ├── which
+│   │   ├── why-is-node-running
+│   │   ├── wrap-ansi
+│   │   ├── wrap-ansi-cjs
+│   │   ├── ws
+│   │   ├── xmlchars
+│   │   └── xml-name-validator
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── src
+│   │   ├── App.vue
+│   │   └── main.js
+│   ├── tests
+│   │   └── App.test.js
+│   └── vite.config.js
+├── infra
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── terraform.tfstate
+│   ├── terraform.tfstate.backup
+│   └── variables.tf
+├── k8s
+│   ├── backend-deployment.yaml
+│   ├── backend-service.yaml
+│   ├── frontend-deployment.yaml
+│   ├── frontend-service.yaml
+│   ├── kustomization.yaml
+│   └── postgres-simple.yaml
+├── kind-config.yaml
+├── README.md
+└── requirements.txt
+
+167 directories, 28 files

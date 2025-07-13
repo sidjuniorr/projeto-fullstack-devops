@@ -258,12 +258,12 @@ button[type="submit"]:hover {
 }
 
 .btn-concluir {
-  background-color: #4CAF50;
+  background-color: #66a6f0;
   color: white;
 }
 
 .btn-concluir:hover {
-  background-color: #45a049;
+  background-color: #66a6f0;
 }
 
 .btn-desfazer {
