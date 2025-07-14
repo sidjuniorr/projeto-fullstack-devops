@@ -160,7 +160,7 @@ O frontend estará rodando em http://localhost:3000
 
 ## Integração Contínua (CI/CD) com GitHub Actions
 
-Este projeto utiliza GitHub Actions para automatizar o processo de CI/CD. Em cada `push` ou `pull_request` para a branch `master`, o workflow irá:
+Este projeto utiliza GitHub Actions para automatizar o processo de CI/CD. Em cada `push` ou `pull_request` para a branch `main`, o workflow irá:
 
 1.  Executar os testes de backend (Pytest).
 2.  Executar os testes de frontend (Vitest).
